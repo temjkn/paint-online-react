@@ -1,0 +1,64 @@
+@import './variables.scss';
+
+.toolbar{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    height: $toolbar-height;
+    border-bottom: 1px solid black;
+    padding: 5px 15px;
+    &__left{
+        display:flex;
+        align-items: center;
+    }
+    &__btn{
+        border: none;
+        cursor: pointer;
+        margin-right: 10px;
+        width: 25px;
+        height: 25px;
+        &:hover{
+            opacity: 0.7;
+        }
+    }
+}
+.line-width{
+    line-height: $toolbar-height;
+}
+.input-number{
+    margin-left: 15px;
+    max-width: 45px;
+}
+
+.brush{
+    background: url('../assets/img/brush.png') no-repeat center center;
+    background-size: contain;
+}
+.rect{
+    background: url('../assets/img/rect.png') no-repeat center center;
+    background-size: contain;
+}
+.circle{
+    background: url('../assets/img/circle.png') no-repeat center center;
+    background-size: contain;
+}
+.eraser{
+    background: url('../assets/img/eraser.png') no-repeat center center;
+    background-size: contain;
+}
+.line{
+    background: url('../assets/img/line.png') no-repeat center center;
+    background-size: contain;
+}
+.undo{
+    background: url('../assets/img/undo.png') no-repeat center center;
+    background-size: contain;
+}
+.redo{
+    background: url('../assets/img/redo.png') no-repeat center center;
+    background-size: contain;
+}
+.save{
+    background: url('../assets/img/save.png') no-repeat center center;
+    background-size: contain;
+}
