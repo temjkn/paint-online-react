@@ -32,7 +32,7 @@ export default class Circle extends Tool{
 
             let radius = Math.sqrt(width**2 + height**2)
 
-            this.draw(currentX, currentY, radius)
+            this.draw(currentX, currentY, radius) //рисую со смещением центра
             // this.draw(this.startX, this.startY, radius)
         }
     }
