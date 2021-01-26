@@ -1,31 +1,28 @@
-import Tool from "./Tools"
+import Tool from "./Tools";
 
-export default class Circle extends Tool{
-    mouseMoveHandler(e){
+export default class Line extends Tool{
+    mouseDownHandler(e){
+        this.mouseDown = true;
+        this.currentX = e.pageX - e.target.offsetLeft;
+        this.currentY = e.pageY - e.target.offsetTop;
+        this.ctx.beginPath()
+        this.ctx.moveTo(this.currentX, this.currentY )
+        this.saved = this.canvas.toDataURL()
+    }
+    mouseMoveHandler(e){ //двигаю мышь с нажатой кнопкой
         if(this.mouseDown){
-            let currentX = e.pageX - e.target.offsetLeft
-            let currentY = e.pageY - e.target.offsetTop
-
-            let height = currentY - this.startY
-            let width = currentX - this.startX
-
-            let radius = Math.sqrt(width**2 + height**2)
-
-            this.draw(currentX, currentY, radius) //рисую со смещением центра
-            // this.draw(this.startX, this.startY, radius) //курсор - центр круга
+            this.draw(e.pageX - e.target.offsetLeft, e.pageY - e.target.offsetTop)
         }
     }
-    draw(x,y,radius){
+    draw(x,y){
         const img = new Image();
         img.src = this.saved //записал предыдущий снимок canvas, что-бы прямойгольник рисовался новый, а не поверх старого за один прием
         img.onload = () =>{ //слушатель события, отрабатывает момент когда изображение установилось
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height) //удаляет старый прямоугольник
             this.ctx.drawImage(img, 0, 0, this.canvas.width, this.canvas.height) //вставляет предыдущий снимок canvas
-
             this.ctx.beginPath()
-
-            this.ctx.arc(x, y, radius, 0, 2 * Math.PI);
-            this.ctx.fill()
+            this.ctx.moveTo(this.currentX, this.currentY)
+            this.ctx.lineTo(x,y)
             this.ctx.stroke()
         }
     }
