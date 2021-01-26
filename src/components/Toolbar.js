@@ -30,8 +30,8 @@ const Toolbar = () => {
                 <input id = 'strokeColor' type='color' defaultValue={toolState.strokeColor} onChange = { (e)=> ChangeStrokeColor(e.target.value)}/>
             </div>
             <div className='toolbar__right'>
-                <button className='toolbar__btn undo'></button>
-                <button className='toolbar__btn redo'></button>
+                <button className='toolbar__btn undo' onClick = {()=> canvasState.undo()}></button>
+                <button className='toolbar__btn redo' onClick = {()=> canvasState.redo()}></button>
                 <button className='toolbar__btn save'></button>
             </div>
         </div>

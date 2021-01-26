@@ -16,10 +16,13 @@ const Canvas = observer(() => {
         }
         , []
     )
+    const mouseDownHandler = () => {
+        canvasState.pushToUndo(canvasRef.current.toDataURL()) //записываю снимки canvas для возможности отмены действий
+    }
 
     return (
         <div className="canvas">
-            <canvas ref={canvasRef} width={600} height={400}></canvas>
+            <canvas onMouseDown = {() => mouseDownHandler()} ref={canvasRef} width={600} height={400}></canvas>
         </div>
     );
 });
